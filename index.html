@@ -21,12 +21,12 @@ tr.selected { background-color:yellow !important; }
 <script src="angular.js"></script>
 <script>
 var app = angular.module("App", []);
-app.controller("Controller", function($scope, $http) {
+app.controller("Controller", function($scope, $http, $interval) {
 	$scope.sortby = 'overallrank';
 	$scope.sortdesc = false;
 	$scope.selected = null;
 	$scope.counter = 30;
-	setInterval(function() {
+	$interval(function() {
 		$scope.counter--;
 		if ($scope.counter<1) {
 			window.location.reload(true);
