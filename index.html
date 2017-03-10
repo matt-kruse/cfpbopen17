@@ -25,6 +25,13 @@ app.controller("Controller", function($scope, $http) {
 	$scope.sortby = 'overallrank';
 	$scope.sortdesc = false;
 	$scope.selected = null;
+	$scope.counter = 30;
+	setInterval(function() {
+		$scope.counter--;
+		if ($scope.counter<1) {
+			window.location.reload(true);
+		}
+	}, 1000*60 );
 	$scope.sort = function(key,desc) {
 		$scope.sortdesc = (key==$scope.sortby) ? !$scope.sortdesc : (typeof desc=="boolean"?desc:false);
 		$scope.sortby = key;
@@ -82,7 +89,7 @@ app.controller("Controller", function($scope, $http) {
 
 <div ng-if="!athletes">Loading...</div>
 <div ng-if="athletes">
-<b>CFPB Crossfit Open 2017</b> <i>(Click column headers to sort, click rows to select)</i>
+<b>CFPB Crossfit Open 2017</b> <i>(Click column headers to sort, click rows to select)</i> - Next reload: {{counter}} minutes
 <table>
 <thead>
 	<tr>
