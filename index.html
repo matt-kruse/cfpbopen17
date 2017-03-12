@@ -38,7 +38,7 @@ app.controller("Controller", function($scope, $http, $interval) {
 		if (typeof s!="number") { return "x"; }
 		var m = Math.floor(s/60);
 		s = (s-m*60);
-		if (s<10) { s=s+"0"; }
+		if (s<10) { s="0"+s; }
 		return m+":"+s;
 	};
 	$scope.sort = function(key,desc) {
